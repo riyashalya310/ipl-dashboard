@@ -16,13 +16,10 @@ class TeamMatches extends Component {
   }
 
   getMatchDetail = async () => {
-    const options = {
-      method: 'GET',
-    }
     const {match} = this.props
     const {params} = match
     const {id} = params
-    const response = await fetch(`https://apis.ccbp.in/ipl/${id}`, options)
+    const response = await fetch(`https://apis.ccbp.in/ipl/${id}`)
     if (response.ok) {
       const data = await response.json()
       const filteredTeamBannerUrl = {
@@ -75,7 +72,7 @@ class TeamMatches extends Component {
     return (
       <div>
         {loading ? (
-          <div data-testid="loader">
+          <div testid="loader">
             <Loader type="Oval" color="#ffffff" height={50} width={50} />
           </div>
         ) : (

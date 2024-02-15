@@ -15,10 +15,7 @@ class Home extends Component {
   }
 
   getMatchDetails = async () => {
-    const options = {
-      method: 'GET',
-    }
-    const response = await fetch('https://apis.ccbp.in/ipl', options)
+    const response = await fetch('https://apis.ccbp.in/ipl')
     if (response.ok) {
       const data = await response.json()
       const filteredData = data.teams.map(team => ({
@@ -44,7 +41,7 @@ class Home extends Component {
           IPL DASHBOARD
         </h1>
         {loading ? (
-          <div data-testid="loader">
+          <div testid="loader">
             <Loader type="Oval" color="#ffffff" height={50} width={50} />
           </div>
         ) : (
